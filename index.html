@@ -1,0 +1,1100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 10.7px 0.0px; font: 14.7px Helvetica; color: #000000; -webkit-text-stroke: #000000}
+    span.s1 {font-kerning: none}
+    span.s2 {font: 14.7px 'Apple Color Emoji'; font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!doctype html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="ko"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;meta charset="utf-8" /&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;meta name="viewport" content="width=device-width,initial-scale=1" /&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;title&gt;ERB RUNNERS · Team Board&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  &lt;!-- Pretendard + Poppins --&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;link rel="preconnect" href="https://fonts.googleapis.com" crossorigin&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet"&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  &lt;style&gt;</span></p>
+<p class="p1"><span class="s1">    :root{</span></p>
+<p class="p1"><span class="s1">      --bg:#f6f7f9;</span></p>
+<p class="p1"><span class="s1">      --card:#ffffff;</span></p>
+<p class="p1"><span class="s1">      --text:#101828;</span></p>
+<p class="p1"><span class="s1">      --sub:#667085;</span></p>
+<p class="p1"><span class="s1">      --muted:#98a2b3;</span></p>
+<p class="p1"><span class="s1">      --line: rgba(16,24,40,.08);</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">      --shadow: 0 10px 30px rgba(16,24,40,.08);</span></p>
+<p class="p1"><span class="s1">      --shadow2: 0 6px 18px rgba(16,24,40,.06);</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">      /* top3 */</span></p>
+<p class="p1"><span class="s1">      --gold:#f6c343;</span></p>
+<p class="p1"><span class="s1">      --silver:#cfd6e6;</span></p>
+<p class="p1"><span class="s1">      --bronze:#c97b4a;</span></p>
+<p class="p1"><span class="s1">      --grayBadge:#94a3b8;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">      --blue:#3182f6;</span></p>
+<p class="p1"><span class="s1">      --blue2:#1d4ed8;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">      --radius: 22px;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    *{box-sizing:border-box}</span></p>
+<p class="p1"><span class="s1">    html,body{height:100%}</span></p>
+<p class="p1"><span class="s1">    body{</span></p>
+<p class="p1"><span class="s1">      margin:0;</span></p>
+<p class="p1"><span class="s1">      font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;</span></p>
+<p class="p1"><span class="s1">      background: var(--bg);</span></p>
+<p class="p1"><span class="s1">      color: var(--text);</span></p>
+<p class="p1"><span class="s1">      overflow-x:hidden;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    /* ===== Running track background ===== */</span></p>
+<p class="p1"><span class="s1">    .bgTrack{</span></p>
+<p class="p1"><span class="s1">      position: fixed;</span></p>
+<p class="p1"><span class="s1">      inset: -140px -180px auto auto;</span></p>
+<p class="p1"><span class="s1">      width: 760px;</span></p>
+<p class="p1"><span class="s1">      height: 760px;</span></p>
+<p class="p1"><span class="s1">      opacity: .10;</span></p>
+<p class="p1"><span class="s1">      pointer-events:none;</span></p>
+<p class="p1"><span class="s1">      z-index: 0;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .bgTrack2{</span></p>
+<p class="p1"><span class="s1">      position: fixed;</span></p>
+<p class="p1"><span class="s1">      inset: auto auto -220px -220px;</span></p>
+<p class="p1"><span class="s1">      width: 860px;</span></p>
+<p class="p1"><span class="s1">      height: 860px;</span></p>
+<p class="p1"><span class="s1">      opacity: .08;</span></p>
+<p class="p1"><span class="s1">      pointer-events:none;</span></p>
+<p class="p1"><span class="s1">      z-index: 0;</span></p>
+<p class="p1"><span class="s1">      transform: rotate(12deg);</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .wrap{</span></p>
+<p class="p1"><span class="s1">      max-width: 780px;</span></p>
+<p class="p1"><span class="s1">      margin: 0 auto;</span></p>
+<p class="p1"><span class="s1">      padding: 18px 14px 32px;</span></p>
+<p class="p1"><span class="s1">      position:relative;</span></p>
+<p class="p1"><span class="s1">      z-index: 1;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    header{ padding: 10px 2px 14px; }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .brand{</span></p>
+<p class="p1"><span class="s1">      display:flex;</span></p>
+<p class="p1"><span class="s1">      align-items:center;</span></p>
+<p class="p1"><span class="s1">      gap:10px;</span></p>
+<p class="p1"><span class="s1">      min-width: 0;</span></p>
+<p class="p1"><span class="s1">      margin-bottom: 12px;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .logo{</span></p>
+<p class="p1"><span class="s1">      width:38px; height:38px;</span></p>
+<p class="p1"><span class="s1">      border-radius: 14px;</span></p>
+<p class="p1"><span class="s1">      background: linear-gradient(135deg, #3182f6, #a78bfa);</span></p>
+<p class="p1"><span class="s1">      box-shadow: 0 10px 18px rgba(16,24,40,.14);</span></p>
+<p class="p1"><span class="s1">      flex: 0 0 auto;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .brandText{ min-width:0; }</span></p>
+<p class="p1"><span class="s1">    .brandTitle{</span></p>
+<p class="p1"><span class="s1">      font-weight: 1000;</span></p>
+<p class="p1"><span class="s1">      letter-spacing: -0.2px;</span></p>
+<p class="p1"><span class="s1">      font-size: 14px;</span></p>
+<p class="p1"><span class="s1">      line-height: 1.15;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .brandSub{</span></p>
+<p class="p1"><span class="s1">      display:block;</span></p>
+<p class="p1"><span class="s1">      margin-top: 2px;</span></p>
+<p class="p1"><span class="s1">      font-size: 12px;</span></p>
+<p class="p1"><span class="s1">      color: var(--sub);</span></p>
+<p class="p1"><span class="s1">      line-height: 1.15;</span></p>
+<p class="p1"><span class="s1">      white-space:nowrap;</span></p>
+<p class="p1"><span class="s1">      overflow:hidden;</span></p>
+<p class="p1"><span class="s1">      text-overflow:ellipsis;</span></p>
+<p class="p1"><span class="s1">      max-width: 460px;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .hero{</span></p>
+<p class="p1"><span class="s1">      padding: 16px 18px 16px;</span></p>
+<p class="p1"><span class="s1">      border-radius: var(--radius);</span></p>
+<p class="p1"><span class="s1">      background: #fff;</span></p>
+<p class="p1"><span class="s1">      border: 1px solid var(--line);</span></p>
+<p class="p1"><span class="s1">      box-shadow: var(--shadow);</span></p>
+<p class="p1"><span class="s1">      position:relative;</span></p>
+<p class="p1"><span class="s1">      overflow:hidden;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .hero::before{</span></p>
+<p class="p1"><span class="s1">      content:"";</span></p>
+<p class="p1"><span class="s1">      position:absolute;</span></p>
+<p class="p1"><span class="s1">      inset:-120px -220px auto auto;</span></p>
+<p class="p1"><span class="s1">      width:520px; height:520px;</span></p>
+<p class="p1"><span class="s1">      background: radial-gradient(circle at 30% 30%, rgba(49,130,246,.18), transparent 55%),</span></p>
+<p class="p1"><span class="s1">                  radial-gradient(circle at 70% 60%, rgba(167,139,250,.14), transparent 55%);</span></p>
+<p class="p1"><span class="s1">      pointer-events:none;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .heroTop{</span></p>
+<p class="p1"><span class="s1">      display:flex;</span></p>
+<p class="p1"><span class="s1">      align-items:flex-start;</span></p>
+<p class="p1"><span class="s1">      justify-content:space-between;</span></p>
+<p class="p1"><span class="s1">      gap: 14px;</span></p>
+<p class="p1"><span class="s1">      flex-wrap:wrap;</span></p>
+<p class="p1"><span class="s1">      position:relative;</span></p>
+<p class="p1"><span class="s1">      z-index:1;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    h1{</span></p>
+<p class="p1"><span class="s1">      margin:0;</span></p>
+<p class="p1"><span class="s1">      font-size: 36px;</span></p>
+<p class="p1"><span class="s1">      line-height: 1.06;</span></p>
+<p class="p1"><span class="s1">      letter-spacing: -0.8px;</span></p>
+<p class="p1"><span class="s1">      font-weight: 1000;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .subtitle{</span></p>
+<p class="p1"><span class="s1">      margin-top: 6px;</span></p>
+<p class="p1"><span class="s1">      font-size: 13px;</span></p>
+<p class="p1"><span class="s1">      color: var(--sub);</span></p>
+<p class="p1"><span class="s1">      line-height: 1.3;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .smallLine{</span></p>
+<p class="p1"><span class="s1">      margin-top: 6px;</span></p>
+<p class="p1"><span class="s1">      font-size: 12px;</span></p>
+<p class="p1"><span class="s1">      color: var(--muted);</span></p>
+<p class="p1"><span class="s1">      line-height: 1.35;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    /* ===== (NEW) Program progress runner bar (FIXED: no clipping) ===== */</span></p>
+<p class="p1"><span class="s1">    .progWrap{</span></p>
+<p class="p1"><span class="s1">      margin-bottom: 12px;</span></p>
+<p class="p1"><span class="s1">      position:relative;</span></p>
+<p class="p1"><span class="s1">      z-index:1;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .progTop{</span></p>
+<p class="p1"><span class="s1">      display:flex;</span></p>
+<p class="p1"><span class="s1">      align-items:baseline;</span></p>
+<p class="p1"><span class="s1">      justify-content:space-between;</span></p>
+<p class="p1"><span class="s1">      gap: 10px;</span></p>
+<p class="p1"><span class="s1">      flex-wrap:wrap;</span></p>
+<p class="p1"><span class="s1">      margin-bottom: 6px;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .progTitle{</span></p>
+<p class="p1"><span class="s1">      font-size: 12px;</span></p>
+<p class="p1"><span class="s1">      font-weight: 1000;</span></p>
+<p class="p1"><span class="s1">      color: var(--sub);</span></p>
+<p class="p1"><span class="s1">      letter-spacing: -0.1px;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .progPct{</span></p>
+<p class="p1"><span class="s1">      font-family: "Poppins", system-ui, sans-serif;</span></p>
+<p class="p1"><span class="s1">      font-size: 12px;</span></p>
+<p class="p1"><span class="s1">      font-weight: 700;</span></p>
+<p class="p1"><span class="s1">      color: var(--muted);</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .progTrackWrap{</span></p>
+<p class="p1"><span class="s1">      position: relative;</span></p>
+<p class="p1"><span class="s1">      padding-top: 22px; /* runner space */</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .progTrack{</span></p>
+<p class="p1"><span class="s1">      position:relative;</span></p>
+<p class="p1"><span class="s1">      height: 12px;</span></p>
+<p class="p1"><span class="s1">      border-radius: 999px;</span></p>
+<p class="p1"><span class="s1">      background: rgba(16,24,40,.06);</span></p>
+<p class="p1"><span class="s1">      border: 1px solid rgba(16,24,40,.06);</span></p>
+<p class="p1"><span class="s1">      overflow: hidden; /* keep fill rounded */</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .progFill{</span></p>
+<p class="p1"><span class="s1">      position:absolute;</span></p>
+<p class="p1"><span class="s1">      inset:0 auto 0 0;</span></p>
+<p class="p1"><span class="s1">      width: 0%;</span></p>
+<p class="p1"><span class="s1">      border-radius: 999px;</span></p>
+<p class="p1"><span class="s1">      background: linear-gradient(90deg, rgba(246,195,67,1), rgba(255,79,216,1), rgba(59,130,246,1));</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .runner{</span></p>
+<p class="p1"><span class="s1">      position:absolute;</span></p>
+<p class="p1"><span class="s1">      top: 0; /* inside padding area */</span></p>
+<p class="p1"><span class="s1">      left: 0px; /* px-based move */</span></p>
+<p class="p1"><span class="s1">      transform: translateX(-50%);</span></p>
+<p class="p1"><span class="s1">      display:flex;</span></p>
+<p class="p1"><span class="s1">      align-items:center;</span></p>
+<p class="p1"><span class="s1">      gap: 6px;</span></p>
+<p class="p1"><span class="s1">      padding: 6px 10px;</span></p>
+<p class="p1"><span class="s1">      border-radius: 999px;</span></p>
+<p class="p1"><span class="s1">      background: rgba(255,255,255,.92);</span></p>
+<p class="p1"><span class="s1">      border: 1px solid rgba(16,24,40,.10);</span></p>
+<p class="p1"><span class="s1">      box-shadow: 0 10px 18px rgba(16,24,40,.10);</span></p>
+<p class="p1"><span class="s1">      backdrop-filter: blur(8px);</span></p>
+<p class="p1"><span class="s1">      white-space:nowrap;</span></p>
+<p class="p1"><span class="s1">      user-select:none;</span></p>
+<p class="p1"><span class="s1">      z-index: 2;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .runnerIcon{ font-size: 14px; line-height: 1; }</span></p>
+<p class="p1"><span class="s1">    .runnerText{</span></p>
+<p class="p1"><span class="s1">      font-family: "Poppins", system-ui, sans-serif;</span></p>
+<p class="p1"><span class="s1">      font-size: 12px;</span></p>
+<p class="p1"><span class="s1">      font-weight: 700;</span></p>
+<p class="p1"><span class="s1">      color: var(--text);</span></p>
+<p class="p1"><span class="s1">      letter-spacing: -0.1px;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .progMeta{</span></p>
+<p class="p1"><span class="s1">      display:flex;</span></p>
+<p class="p1"><span class="s1">      justify-content:space-between;</span></p>
+<p class="p1"><span class="s1">      gap: 10px;</span></p>
+<p class="p1"><span class="s1">      margin-top: 6px;</span></p>
+<p class="p1"><span class="s1">      color: var(--muted);</span></p>
+<p class="p1"><span class="s1">      font-size: 11px;</span></p>
+<p class="p1"><span class="s1">      font-family: "Poppins", system-ui, sans-serif;</span></p>
+<p class="p1"><span class="s1">      font-weight: 600;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    /* ===== Data reflected bar under Week ===== */</span></p>
+<p class="p1"><span class="s1">    .dataInfo{</span></p>
+<p class="p1"><span class="s1">      margin-top: 10px;</span></p>
+<p class="p1"><span class="s1">      display:flex;</span></p>
+<p class="p1"><span class="s1">      align-items:center;</span></p>
+<p class="p1"><span class="s1">      gap:10px;</span></p>
+<p class="p1"><span class="s1">      flex-wrap:wrap;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .dataInfoText{</span></p>
+<p class="p1"><span class="s1">      font-size: 12px;</span></p>
+<p class="p1"><span class="s1">      color: var(--sub);</span></p>
+<p class="p1"><span class="s1">      font-weight: 800;</span></p>
+<p class="p1"><span class="s1">      letter-spacing: -0.1px;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .dataBar{</span></p>
+<p class="p1"><span class="s1">      width: 220px;</span></p>
+<p class="p1"><span class="s1">      height: 8px;</span></p>
+<p class="p1"><span class="s1">      border-radius: 999px;</span></p>
+<p class="p1"><span class="s1">      background: rgba(16,24,40,.06);</span></p>
+<p class="p1"><span class="s1">      overflow:hidden;</span></p>
+<p class="p1"><span class="s1">      border: 1px solid rgba(16,24,40,.06);</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .dataBarFill{</span></p>
+<p class="p1"><span class="s1">      height: 100%;</span></p>
+<p class="p1"><span class="s1">      width: 0%;</span></p>
+<p class="p1"><span class="s1">      border-radius: 999px;</span></p>
+<p class="p1"><span class="s1">      background: linear-gradient(90deg, rgba(246,195,67,1), rgba(255,79,216,1), rgba(59,130,246,1));</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    /* ===== Controls ===== */</span></p>
+<p class="p1"><span class="s1">    .controls{</span></p>
+<p class="p1"><span class="s1">      display:flex;</span></p>
+<p class="p1"><span class="s1">      gap:10px;</span></p>
+<p class="p1"><span class="s1">      align-items:center;</span></p>
+<p class="p1"><span class="s1">      flex-wrap:wrap;</span></p>
+<p class="p1"><span class="s1">      justify-content:flex-end;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .pill{</span></p>
+<p class="p1"><span class="s1">      display:flex;</span></p>
+<p class="p1"><span class="s1">      align-items:center;</span></p>
+<p class="p1"><span class="s1">      gap:8px;</span></p>
+<p class="p1"><span class="s1">      padding: 10px 12px;</span></p>
+<p class="p1"><span class="s1">      border-radius: 999px;</span></p>
+<p class="p1"><span class="s1">      background: #fff;</span></p>
+<p class="p1"><span class="s1">      border: 1px solid var(--line);</span></p>
+<p class="p1"><span class="s1">      box-shadow: var(--shadow2);</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .pill span{</span></p>
+<p class="p1"><span class="s1">      color: var(--muted);</span></p>
+<p class="p1"><span class="s1">      font-size: 12px;</span></p>
+<p class="p1"><span class="s1">      font-weight: 900;</span></p>
+<p class="p1"><span class="s1">      letter-spacing: .02em;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    input[type="text"]{</span></p>
+<p class="p1"><span class="s1">      border:none; outline:none;</span></p>
+<p class="p1"><span class="s1">      background: transparent;</span></p>
+<p class="p1"><span class="s1">      color: var(--text);</span></p>
+<p class="p1"><span class="s1">      width: 210px;</span></p>
+<p class="p1"><span class="s1">      font-size: 14px;</span></p>
+<p class="p1"><span class="s1">      font-weight: 800;</span></p>
+<p class="p1"><span class="s1">      font-family: Pretendard, system-ui, sans-serif;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    input[type="text"]::placeholder{ color: #c0c7d2; font-weight: 700; }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .btn{</span></p>
+<p class="p1"><span class="s1">      border:none;</span></p>
+<p class="p1"><span class="s1">      cursor:pointer;</span></p>
+<p class="p1"><span class="s1">      padding: 10px 12px;</span></p>
+<p class="p1"><span class="s1">      border-radius: 999px;</span></p>
+<p class="p1"><span class="s1">      background: rgba(49,130,246,.10);</span></p>
+<p class="p1"><span class="s1">      border: 1px solid rgba(49,130,246,.18);</span></p>
+<p class="p1"><span class="s1">      color: var(--blue2);</span></p>
+<p class="p1"><span class="s1">      font-weight: 1000;</span></p>
+<p class="p1"><span class="s1">      font-family: Pretendard, system-ui, sans-serif;</span></p>
+<p class="p1"><span class="s1">      box-shadow: var(--shadow2);</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .btn:hover{ background: rgba(49,130,246,.14); }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    main{ margin-top: 14px; }</span></p>
+<p class="p1"><span class="s1">    .sheet{ background: transparent; padding: 0; }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    /* ===== Row Card ===== */</span></p>
+<p class="p1"><span class="s1">    .row{</span></p>
+<p class="p1"><span class="s1">      position: relative;</span></p>
+<p class="p1"><span class="s1">      background: var(--card);</span></p>
+<p class="p1"><span class="s1">      border-radius: 20px;</span></p>
+<p class="p1"><span class="s1">      border: 1px solid var(--line);</span></p>
+<p class="p1"><span class="s1">      box-shadow: var(--shadow2);</span></p>
+<p class="p1"><span class="s1">      padding: 16px 16px 22px;</span></p>
+<p class="p1"><span class="s1">      margin: 10px 0;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">      display:grid;</span></p>
+<p class="p1"><span class="s1">      grid-template-columns: 1fr auto;</span></p>
+<p class="p1"><span class="s1">      gap: 14px;</span></p>
+<p class="p1"><span class="s1">      overflow:hidden;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    /* colorful top3 highlight line */</span></p>
+<p class="p1"><span class="s1">    .row.top1::before,</span></p>
+<p class="p1"><span class="s1">    .row.top2::before,</span></p>
+<p class="p1"><span class="s1">    .row.top3::before{</span></p>
+<p class="p1"><span class="s1">      content:"";</span></p>
+<p class="p1"><span class="s1">      position:absolute;</span></p>
+<p class="p1"><span class="s1">      left:0; right:0; top:0;</span></p>
+<p class="p1"><span class="s1">      height: 6px;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .row.top1::before{ background: linear-gradient(90deg, rgba(246,195,67,.95), rgba(246,195,67,.10)); }</span></p>
+<p class="p1"><span class="s1">    .row.top2::before{ background: linear-gradient(90deg, rgba(207,214,230,.95), rgba(207,214,230,.12)); }</span></p>
+<p class="p1"><span class="s1">    .row.top3::before{ background: linear-gradient(90deg, rgba(201,123,74,.95), rgba(201,123,74,.10)); }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .leftBlock{</span></p>
+<p class="p1"><span class="s1">      display:flex;</span></p>
+<p class="p1"><span class="s1">      gap: 12px;</span></p>
+<p class="p1"><span class="s1">      align-items:flex-start;</span></p>
+<p class="p1"><span class="s1">      min-width: 0;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    /* Rank badge: top3 colorful + 3D */</span></p>
+<p class="p1"><span class="s1">    .rankBadge{</span></p>
+<p class="p1"><span class="s1">      flex: 0 0 auto;</span></p>
+<p class="p1"><span class="s1">      width: 52px;</span></p>
+<p class="p1"><span class="s1">      height: 52px;</span></p>
+<p class="p1"><span class="s1">      border-radius: 16px;</span></p>
+<p class="p1"><span class="s1">      display:flex;</span></p>
+<p class="p1"><span class="s1">      align-items:center;</span></p>
+<p class="p1"><span class="s1">      justify-content:center;</span></p>
+<p class="p1"><span class="s1">      font-weight: 1000;</span></p>
+<p class="p1"><span class="s1">      font-size: 18px;</span></p>
+<p class="p1"><span class="s1">      user-select:none;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">      background: #eef2f6;</span></p>
+<p class="p1"><span class="s1">      color: #0b1220;</span></p>
+<p class="p1"><span class="s1">      border: 1px solid rgba(255,255,255,.9);</span></p>
+<p class="p1"><span class="s1">      box-shadow: 0 10px 16px rgba(2,6,23,.12);</span></p>
+<p class="p1"><span class="s1">      position:relative;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .rankBadge::before,</span></p>
+<p class="p1"><span class="s1">    .rankBadge::after{</span></p>
+<p class="p1"><span class="s1">      content:"";</span></p>
+<p class="p1"><span class="s1">      position:absolute;</span></p>
+<p class="p1"><span class="s1">      bottom:-15px;</span></p>
+<p class="p1"><span class="s1">      width: 14px; height: 18px;</span></p>
+<p class="p1"><span class="s1">      border-radius: 0 0 7px 7px;</span></p>
+<p class="p1"><span class="s1">      box-shadow: 0 8px 14px rgba(2,6,23,.10);</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .rankBadge::before{ left: 12px; transform: rotate(2deg); }</span></p>
+<p class="p1"><span class="s1">    .rankBadge::after{ right: 12px; transform: rotate(-2deg); }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .rankBadge.top3d{</span></p>
+<p class="p1"><span class="s1">      box-shadow:</span></p>
+<p class="p1"><span class="s1">        0 16px 22px rgba(2,6,23,.18),</span></p>
+<p class="p1"><span class="s1">        inset 0 2px 0 rgba(255,255,255,.65),</span></p>
+<p class="p1"><span class="s1">        inset 0 -4px 10px rgba(2,6,23,.16);</span></p>
+<p class="p1"><span class="s1">      border: 1px solid rgba(255,255,255,.92);</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .rankBadge.gold{ background: linear-gradient(135deg, var(--gold), rgba(246,195,67,.55)); }</span></p>
+<p class="p1"><span class="s1">    .rankBadge.silver{ background: linear-gradient(135deg, var(--silver), rgba(207,214,230,.55)); }</span></p>
+<p class="p1"><span class="s1">    .rankBadge.bronze{ background: linear-gradient(135deg, var(--bronze), rgba(201,123,74,.55)); }</span></p>
+<p class="p1"><span class="s1">    .rankBadge.gray{ background: linear-gradient(135deg, var(--grayBadge), rgba(148,163,184,.55)); color:#0b1220; }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .rankBadge.gold::before, .rankBadge.gold::after{ background: rgba(255,79,216,.45); }</span></p>
+<p class="p1"><span class="s1">    .rankBadge.silver::before, .rankBadge.silver::after{ background: rgba(59,130,246,.34); }</span></p>
+<p class="p1"><span class="s1">    .rankBadge.bronze::before, .rankBadge.bronze::after{ background: rgba(234,88,12,.26); }</span></p>
+<p class="p1"><span class="s1">    .rankBadge.gray::before, .rankBadge.gray::after{ background: rgba(37,99,235,.14); }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .teamBlock{ min-width:0; }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    /* team + members bigger */</span></p>
+<p class="p1"><span class="s1">    .team{</span></p>
+<p class="p1"><span class="s1">      font-weight: 1000;</span></p>
+<p class="p1"><span class="s1">      font-size: 19px;</span></p>
+<p class="p1"><span class="s1">      letter-spacing: -0.35px;</span></p>
+<p class="p1"><span class="s1">      line-height: 1.15;</span></p>
+<p class="p1"><span class="s1">      color: var(--text);</span></p>
+<p class="p1"><span class="s1">      white-space:nowrap;</span></p>
+<p class="p1"><span class="s1">      overflow:hidden;</span></p>
+<p class="p1"><span class="s1">      text-overflow:ellipsis;</span></p>
+<p class="p1"><span class="s1">      max-width: 520px;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .members{</span></p>
+<p class="p1"><span class="s1">      margin-top: 8px;</span></p>
+<p class="p1"><span class="s1">      color: var(--sub);</span></p>
+<p class="p1"><span class="s1">      font-size: 13px;</span></p>
+<p class="p1"><span class="s1">      line-height: 1.4;</span></p>
+<p class="p1"><span class="s1">      white-space:nowrap;</span></p>
+<p class="p1"><span class="s1">      overflow:hidden;</span></p>
+<p class="p1"><span class="s1">      text-overflow:ellipsis;</span></p>
+<p class="p1"><span class="s1">      max-width: 560px;</span></p>
+<p class="p1"><span class="s1">      letter-spacing: -0.15px;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .right{</span></p>
+<p class="p1"><span class="s1">      text-align:right;</span></p>
+<p class="p1"><span class="s1">      min-width: 156px;</span></p>
+<p class="p1"><span class="s1">      font-variant-numeric: tabular-nums;</span></p>
+<p class="p1"><span class="s1">      display:flex;</span></p>
+<p class="p1"><span class="s1">      flex-direction:column;</span></p>
+<p class="p1"><span class="s1">      align-items:flex-end;</span></p>
+<p class="p1"><span class="s1">      gap: 8px;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .rightTop{</span></p>
+<p class="p1"><span class="s1">      display:flex;</span></p>
+<p class="p1"><span class="s1">      align-items:center;</span></p>
+<p class="p1"><span class="s1">      justify-content:flex-end;</span></p>
+<p class="p1"><span class="s1">      gap: 8px;</span></p>
+<p class="p1"><span class="s1">      height: 24px;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    /* Perfect */</span></p>
+<p class="p1"><span class="s1">    .perfectTag{</span></p>
+<p class="p1"><span class="s1">      display:inline-block;</span></p>
+<p class="p1"><span class="s1">      font-family: "Poppins", Pretendard, system-ui, sans-serif;</span></p>
+<p class="p1"><span class="s1">      font-weight: 800;</span></p>
+<p class="p1"><span class="s1">      font-size: 12px;</span></p>
+<p class="p1"><span class="s1">      letter-spacing: .2px;</span></p>
+<p class="p1"><span class="s1">      line-height: 1;</span></p>
+<p class="p1"><span class="s1">      padding: 6px 10px;</span></p>
+<p class="p1"><span class="s1">      border-radius: 999px;</span></p>
+<p class="p1"><span class="s1">      border: 1px solid rgba(16,24,40,.10);</span></p>
+<p class="p1"><span class="s1">      background: rgba(255,255,255,.72);</span></p>
+<p class="p1"><span class="s1">      backdrop-filter: blur(8px);</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">      background-image: linear-gradient(90deg,</span></p>
+<p class="p1"><span class="s1">        rgba(246,195,67,1) 0%,</span></p>
+<p class="p1"><span class="s1">        rgba(255,79,216,1) 45%,</span></p>
+<p class="p1"><span class="s1">        rgba(59,130,246,1) 100%);</span></p>
+<p class="p1"><span class="s1">      -webkit-background-clip:text;</span></p>
+<p class="p1"><span class="s1">      background-clip:text;</span></p>
+<p class="p1"><span class="s1">      color: transparent;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .meta{</span></p>
+<p class="p1"><span class="s1">      display:flex;</span></p>
+<p class="p1"><span class="s1">      flex-direction:column;</span></p>
+<p class="p1"><span class="s1">      gap: 4px;</span></p>
+<p class="p1"><span class="s1">      align-items:flex-end;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .labels{</span></p>
+<p class="p1"><span class="s1">      font-family: "Poppins", system-ui, sans-serif;</span></p>
+<p class="p1"><span class="s1">      color: var(--muted);</span></p>
+<p class="p1"><span class="s1">      font-size: 11px;</span></p>
+<p class="p1"><span class="s1">      letter-spacing: .16em;</span></p>
+<p class="p1"><span class="s1">      user-select:none;</span></p>
+<p class="p1"><span class="s1">      font-weight: 700;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .numbersLine{</span></p>
+<p class="p1"><span class="s1">      font-family: "Poppins", system-ui, sans-serif;</span></p>
+<p class="p1"><span class="s1">      color: var(--sub);</span></p>
+<p class="p1"><span class="s1">      font-size: 12px;</span></p>
+<p class="p1"><span class="s1">      user-select:none;</span></p>
+<p class="p1"><span class="s1">      font-weight: 600;</span></p>
+<p class="p1"><span class="s1">      letter-spacing: 0;</span></p>
+<p class="p1"><span class="s1">      font-variant-numeric: tabular-nums;</span></p>
+<p class="p1"><span class="s1">      -webkit-font-smoothing: antialiased;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .total{</span></p>
+<p class="p1"><span class="s1">      font-family: "Poppins", system-ui, sans-serif;</span></p>
+<p class="p1"><span class="s1">      font-size: 28px;</span></p>
+<p class="p1"><span class="s1">      font-weight: 700;</span></p>
+<p class="p1"><span class="s1">      line-height: 1;</span></p>
+<p class="p1"><span class="s1">      color: #111827;</span></p>
+<p class="p1"><span class="s1">      letter-spacing: -0.2px;</span></p>
+<p class="p1"><span class="s1">      text-rendering: geometricPrecision;</span></p>
+<p class="p1"><span class="s1">      -webkit-font-smoothing: antialiased;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .total.rank1{</span></p>
+<p class="p1"><span class="s1">      color: var(--gold);</span></p>
+<p class="p1"><span class="s1">      text-shadow: 0 10px 22px rgba(246,195,67,.18);</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .total.rank2{</span></p>
+<p class="p1"><span class="s1">      color: #9aa6bf;</span></p>
+<p class="p1"><span class="s1">      text-shadow: 0 10px 22px rgba(158,170,191,.16);</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .total.rank3{</span></p>
+<p class="p1"><span class="s1">      color: var(--bronze);</span></p>
+<p class="p1"><span class="s1">      text-shadow: 0 10px 22px rgba(201,123,74,.16);</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    /* progress */</span></p>
+<p class="p1"><span class="s1">    .progressTrack{</span></p>
+<p class="p1"><span class="s1">      position:absolute;</span></p>
+<p class="p1"><span class="s1">      left: 16px;</span></p>
+<p class="p1"><span class="s1">      right: 16px;</span></p>
+<p class="p1"><span class="s1">      bottom: 10px;</span></p>
+<p class="p1"><span class="s1">      height: 5px;</span></p>
+<p class="p1"><span class="s1">      border-radius: 999px;</span></p>
+<p class="p1"><span class="s1">      background: rgba(16,24,40,.06);</span></p>
+<p class="p1"><span class="s1">      overflow:hidden;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .progressFill{</span></p>
+<p class="p1"><span class="s1">      height:100%;</span></p>
+<p class="p1"><span class="s1">      width:0%;</span></p>
+<p class="p1"><span class="s1">      background: linear-gradient(90deg, rgba(49,130,246,1), rgba(29,78,216,1));</span></p>
+<p class="p1"><span class="s1">      border-radius: 999px;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    .hint{</span></p>
+<p class="p1"><span class="s1">      color: var(--sub);</span></p>
+<p class="p1"><span class="s1">      font-size: 12px;</span></p>
+<p class="p1"><span class="s1">      margin: 10px 4px 0;</span></p>
+<p class="p1"><span class="s1">      line-height: 1.45;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    details{</span></p>
+<p class="p1"><span class="s1">      margin-top: 14px;</span></p>
+<p class="p1"><span class="s1">      border-radius: var(--radius);</span></p>
+<p class="p1"><span class="s1">      background: #fff;</span></p>
+<p class="p1"><span class="s1">      border: 1px solid var(--line);</span></p>
+<p class="p1"><span class="s1">      padding: 12px 14px;</span></p>
+<p class="p1"><span class="s1">      color: var(--text);</span></p>
+<p class="p1"><span class="s1">      box-shadow: var(--shadow2);</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    summary{</span></p>
+<p class="p1"><span class="s1">      cursor:pointer;</span></p>
+<p class="p1"><span class="s1">      font-weight: 1000;</span></p>
+<p class="p1"><span class="s1">      color: var(--text);</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    textarea{</span></p>
+<p class="p1"><span class="s1">      width:100%;</span></p>
+<p class="p1"><span class="s1">      min-height:120px;</span></p>
+<p class="p1"><span class="s1">      resize:vertical;</span></p>
+<p class="p1"><span class="s1">      margin-top: 10px;</span></p>
+<p class="p1"><span class="s1">      border-radius: 16px;</span></p>
+<p class="p1"><span class="s1">      border: 1px solid var(--line);</span></p>
+<p class="p1"><span class="s1">      background: #fbfcfe;</span></p>
+<p class="p1"><span class="s1">      color: var(--text);</span></p>
+<p class="p1"><span class="s1">      padding: 12px;</span></p>
+<p class="p1"><span class="s1">      outline:none;</span></p>
+<p class="p1"><span class="s1">      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;</span></p>
+<p class="p1"><span class="s1">      font-size: 12px;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">    .rowSmall{</span></p>
+<p class="p1"><span class="s1">      display:flex;</span></p>
+<p class="p1"><span class="s1">      gap:10px;</span></p>
+<p class="p1"><span class="s1">      align-items:center;</span></p>
+<p class="p1"><span class="s1">      margin-top:10px;</span></p>
+<p class="p1"><span class="s1">      flex-wrap:wrap;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    @media (max-width:520px){</span></p>
+<p class="p1"><span class="s1">      input[type="text"]{ width: 160px; }</span></p>
+<p class="p1"><span class="s1">      h1{ font-size: 32px; }</span></p>
+<p class="p1"><span class="s1">      .team{ font-size: 18px; max-width: 320px; }</span></p>
+<p class="p1"><span class="s1">      .members{ font-size: 13px; max-width: 320px; }</span></p>
+<p class="p1"><span class="s1">      .total{ font-size: 27px; }</span></p>
+<p class="p1"><span class="s1">      .right{ min-width: 138px; }</span></p>
+<p class="p1"><span class="s1">      .dataBar{ width: 180px; }</span></p>
+<p class="p1"><span class="s1">      .progMeta{ font-size: 10px; }</span></p>
+<p class="p1"><span class="s1">      .progPct{ font-size: 11px; }</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1">  &lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;!-- Track backgrounds --&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;svg class="bgTrack" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;path d="M80 310C140 180 260 120 370 120C520 120 560 230 560 300C560 410 470 490 350 490C220 490 150 420 150 340C150 270 200 240 250 240"</span></p>
+<p class="p1"><span class="s1">          stroke="rgba(49,130,246,1)" stroke-width="18" stroke-linecap="round"/&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;path d="M110 330C170 210 285 160 380 160C490 160 520 250 520 300C520 390 450 450 350 450C250 450 200 400 200 340C200 290 240 270 280 270"</span></p>
+<p class="p1"><span class="s1">          stroke="rgba(167,139,250,1)" stroke-width="10" stroke-linecap="round"/&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;path d="M145 350C205 245 315 205 395 205C470 205 490 265 490 300C490 365 435 410 350 410C275 410 240 375 240 340C240 310 265 300 300 300"</span></p>
+<p class="p1"><span class="s1">          stroke="rgba(246,195,67,1)" stroke-width="6" stroke-linecap="round"/&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;/svg&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  &lt;svg class="bgTrack2" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;path d="M70 320C150 170 290 110 405 120C535 133 575 250 560 325C540 430 445 505 320 500C210 495 140 420 150 345C160 275 230 240 275 240"</span></p>
+<p class="p1"><span class="s1">          stroke="rgba(16,24,40,1)" stroke-width="16" stroke-linecap="round" opacity=".55"/&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;path d="M120 350C190 230 310 175 405 185C495 195 520 265 505 320C485 400 420 445 330 445C250 445 205 405 210 350C215 310 250 290 290 290"</span></p>
+<p class="p1"><span class="s1">          stroke="rgba(49,130,246,1)" stroke-width="8" stroke-linecap="round" opacity=".35"/&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;/svg&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  &lt;div class="wrap"&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;header&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;div class="brand"&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;div class="logo" aria-hidden="true"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;div class="brandText"&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;div class="brandTitle"&gt;ERB RUNNERS&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;small class="brandSub"&gt;팀 현황 · 자동 순위 · Perfect 표시&lt;/small&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">      &lt;div class="hero"&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;!-- overall program progress --&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;div class="progWrap"&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;div class="progTop"&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div class="progTitle"&gt;전체 기간 진행도&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div class="progPct" id="progPct"&gt;0%&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">          &lt;div class="progTrackWrap" id="progTrackWrap" aria-label="전체 기간 진행 바"&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div class="progTrack" id="progTrack"&gt;</span></p>
+<p class="p1"><span class="s1">              &lt;div class="progFill" id="progFill"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">            &lt;div class="runner" id="runner" aria-hidden="true"&gt;</span></p>
+<p class="p1"><span class="s1">              &lt;span class="runnerIcon"&gt;</span><span class="s2">🏃‍♂️</span><span class="s1">&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1">              &lt;span class="runnerText" id="runnerText"&gt;오늘&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">          &lt;div class="progMeta"&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;span id="progStart"&gt;2025.12.14&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;span id="progEnd"&gt;2026.05.02&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        &lt;div class="heroTop"&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;div&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;h1 id="weekTitle"&gt;Week 1&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div class="subtitle" id="subtitle"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">            &lt;div class="dataInfo"&gt;</span></p>
+<p class="p1"><span class="s1">              &lt;div class="dataInfoText" id="dataRefText"&gt;데이터 반영: Week 5까지&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">              &lt;div class="dataBar" aria-hidden="true"&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;div class="dataBarFill" id="dataRefBar"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">              &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">            &lt;div class="smallLine" id="rangeLine"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">          &lt;div class="controls"&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div class="pill"&gt;</span></p>
+<p class="p1"><span class="s1">              &lt;span&gt;검색&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1">              &lt;input id="q" type="text" placeholder="팀명/팀원 검색" /&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;button class="btn" id="copyLink"&gt;현재 상태 링크 복사&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;/header&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    &lt;main&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;div class="sheet"&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;div id="board"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">      &lt;div class="hint"&gt;</span></p>
+<p class="p1"><span class="s1">        * 점수는 R(읽기) / Z(줌미팅) / E(이벤트) 합계로 자동 계산됩니다. 만점(=Rmax+Zmax+Emax)일 경우 Perfect가 표시됩니다.</span></p>
+<p class="p1"><span class="s1">      &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">      &lt;details&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;summary&gt;CSV로 데이터 붙여넣기(선택)&lt;/summary&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;div class="hint" style="margin-top:8px;"&gt;</span></p>
+<p class="p1"><span class="s1">          헤더 포함 CSV 예시: team,members,R,Z,E (members는 | 로 구분)</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;textarea id="csv" placeholder="team,members,R,Z,E</span></p>
+<p class="p1"><span class="s1">꾸준히매일읽(1)조,구재연|양송빈|신은섭|김자연|신찬희,147,10,0</span></p>
+<p class="p1"><span class="s1">JOY,송솔내|김초원|송미소|김예지|이지원,135,10,0"&gt;&lt;/textarea&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;div class="rowSmall"&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;button class="btn" id="loadCsv"&gt;CSV 적용&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;button class="btn" id="resetData"&gt;기본 데이터로 되돌리기&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;/details&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;/main&gt;</span></p>
+<p class="p1"><span class="s1">  &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">&lt;script&gt;</span></p>
+<p class="p1"><span class="s1">/** =========================</span></p>
+<p class="p1"><span class="s1"> *  0) "현재 데이터는 몇 주까지 반영?" 표시</span></p>
+<p class="p1"><span class="s1"> *  ========================= */</span></p>
+<p class="p1"><span class="s1">const DATA_UP_TO_WEEK = 5; // &lt;- 여기만 바꾸면 Week 아래 문구/바가 바뀝니다.</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">/** =========================</span></p>
+<p class="p1"><span class="s1"> *  1) 점수 만점 기준(필요 시 수정)</span></p>
+<p class="p1"><span class="s1"> *  ========================= */</span></p>
+<p class="p1"><span class="s1">const SCORE_MAX = { R: 147, Z: 10, E: 0 };</span></p>
+<p class="p1"><span class="s1">const TOTAL_MAX = SCORE_MAX.R + SCORE_MAX.Z + SCORE_MAX.E;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">/** =========================</span></p>
+<p class="p1"><span class="s1"> *  2) 전체 성경읽기 기간(고정)</span></p>
+<p class="p1"><span class="s1"> *  ========================= */</span></p>
+<p class="p1"><span class="s1">const PROGRAM_START = "2025-12-14"; // 일요일</span></p>
+<p class="p1"><span class="s1">const PROGRAM_END   = "2026-05-02"; // 토요일</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">function toKSTDateOnly(yyyy_mm_dd){</span></p>
+<p class="p1"><span class="s1">  const [y,m,d] = yyyy_mm_dd.split("-").map(Number);</span></p>
+<p class="p1"><span class="s1">  return new Date(y, m-1, d);</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function fmtKR(d){</span></p>
+<p class="p1"><span class="s1">  const y = d.getFullYear();</span></p>
+<p class="p1"><span class="s1">  const m = String(d.getMonth()+1).padStart(2,"0");</span></p>
+<p class="p1"><span class="s1">  const day = String(d.getDate()).padStart(2,"0");</span></p>
+<p class="p1"><span class="s1">  return `${y}.${m}.${day}`;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function clamp(n,min,max){ return Math.max(min, Math.min(max, n)); }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">function getProgramWeekInfo(today = new Date()){</span></p>
+<p class="p1"><span class="s1">  const start = toKSTDateOnly(PROGRAM_START);</span></p>
+<p class="p1"><span class="s1">  const end   = toKSTDateOnly(PROGRAM_END);</span></p>
+<p class="p1"><span class="s1">  const t = new Date(today.getFullYear(), today.getMonth(), today.getDate());</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  if (t &lt; start) return { status:"before", week:0, weekStart:null, weekEnd:null };</span></p>
+<p class="p1"><span class="s1">  if (t &gt; end)   return { status:"after",  week:0, weekStart:null, weekEnd:null };</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  const diffDays = Math.floor((t - start) / (1000*60*60*24));</span></p>
+<p class="p1"><span class="s1">  const week = Math.floor(diffDays / 7) + 1;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  const weekStart = new Date(start);</span></p>
+<p class="p1"><span class="s1">  weekStart.setDate(start.getDate() + (week-1)*7);</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  const weekEnd = new Date(weekStart);</span></p>
+<p class="p1"><span class="s1">  weekEnd.setDate(weekStart.getDate() + 6);</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  return { status:"in", week, weekStart, weekEnd };</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">/** =========================</span></p>
+<p class="p1"><span class="s1"> *  전체 기간 진행률(날짜 기준) + 러너 위치 (FIXED: px, clamped)</span></p>
+<p class="p1"><span class="s1"> *  ========================= */</span></p>
+<p class="p1"><span class="s1">function updateProgramProgress(today = new Date()){</span></p>
+<p class="p1"><span class="s1">  const start = toKSTDateOnly(PROGRAM_START);</span></p>
+<p class="p1"><span class="s1">  const end   = toKSTDateOnly(PROGRAM_END);</span></p>
+<p class="p1"><span class="s1">  const t = new Date(today.getFullYear(), today.getMonth(), today.getDate());</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  const total = (end - start);</span></p>
+<p class="p1"><span class="s1">  const done = (t - start);</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  let pct = 0;</span></p>
+<p class="p1"><span class="s1">  if (total &gt; 0) pct = (done / total) * 100;</span></p>
+<p class="p1"><span class="s1">  pct = clamp(pct, 0, 100);</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  const progFill = document.getElementById("progFill");</span></p>
+<p class="p1"><span class="s1">  const runner = document.getElementById("runner");</span></p>
+<p class="p1"><span class="s1">  const progPct = document.getElementById("progPct");</span></p>
+<p class="p1"><span class="s1">  const runnerText = document.getElementById("runnerText");</span></p>
+<p class="p1"><span class="s1">  const progStart = document.getElementById("progStart");</span></p>
+<p class="p1"><span class="s1">  const progEnd = document.getElementById("progEnd");</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  const track = document.getElementById("progTrack");</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  progStart.textContent = fmtKR(start);</span></p>
+<p class="p1"><span class="s1">  progEnd.textContent = fmtKR(end);</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  progFill.style.width = `${pct.toFixed(1)}%`;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  // px-based runner position (prevents edge clipping)</span></p>
+<p class="p1"><span class="s1">  const w = track.getBoundingClientRect().width;</span></p>
+<p class="p1"><span class="s1">  const x = (pct / 100) * w;</span></p>
+<p class="p1"><span class="s1">  const pad = 22; // safe padding so chip won't go outside</span></p>
+<p class="p1"><span class="s1">  const clampedX = Math.max(pad, Math.min(w - pad, x));</span></p>
+<p class="p1"><span class="s1">  runner.style.left = `${clampedX}px`;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  const label =</span></p>
+<p class="p1"><span class="s1">    (t &lt; start) ? "시작 전" :</span></p>
+<p class="p1"><span class="s1">    (t &gt; end) ? "완료!" :</span></p>
+<p class="p1"><span class="s1">    "오늘";</span></p>
+<p class="p1"><span class="s1">  runnerText.textContent = label;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  progPct.textContent = `${pct.toFixed(1)}%`;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">/** =========================</span></p>
+<p class="p1"><span class="s1"> *  3) 데이터(여기만 바꾸면 됩니다)</span></p>
+<p class="p1"><span class="s1"> *  ========================= */</span></p>
+<p class="p1"><span class="s1">const DEFAULT_DATA = [</span></p>
+<p class="p1"><span class="s1">  { team:"꾸준히매일읽(1)조", members:["구재연","양송빈","신은섭","김자연","신찬희"], R:147, Z:10, E:0 },</span></p>
+<p class="p1"><span class="s1">  { team:"JOY", members:["송솔내","김초원","송미소","김예지","이지원"], R:135, Z:10, E:0 },</span></p>
+<p class="p1"><span class="s1">  { team:"완독하조", members:["임다희","황은정","엄주용","이수현","류연우"], R:98, Z:10, E:0 },</span></p>
+<p class="p1"><span class="s1">  { team:"오늘도읽조", members:["최희선","김지민","김유리","박다영","이예찬"], R:147, Z:10, E:0 },</span></p>
+<p class="p1"><span class="s1">  { team:"5늘도완독", members:["윤현석","Regan","채희란","채지혜","조은서"], R:135, Z:0, E:0 },</span></p>
+<p class="p1"><span class="s1">  { team:"킴스앤황", members:["김순화","Ji-Ho Kim","황보라","김지민","김나경"], R:95, Z:10, E:0 },</span></p>
+<p class="p1"><span class="s1">  { team:"팀명미정(7조)", members:["최지은","황현주","황진경","유정","전하운"], R:98, Z:0, E:0 },</span></p>
+<p class="p1"><span class="s1">  { team:"팔아프니까필사하지말고꼬박꼬박읽조", members:["이도연","박도현","장윤수","김환근","성명규"], R:68, Z:10, E:0 },</span></p>
+<p class="p1"><span class="s1">  { team:"잘읽9싶조", members:["조경윤","류비취","김예은","김지윤","김윤화"], R:141, Z:10, E:0 },</span></p>
+<p class="p1"><span class="s1">  { team:"TT(Team Ten)", members:["박주현","서수연","최민수","이재진","최강"], R:82, Z:0, E:0 },</span></p>
+<p class="p1"><span class="s1">  { team:"KTVM", members:["Liliana","Yami","양시은","김희정"], R:92, Z:10, E:0 },</span></p>
+<p class="p1"><span class="s1">  { team:"열십이조", members:["김용빈","고채은","이혜진","송준미","정수연"], R:147, Z:10, E:0 },</span></p>
+<p class="p1"><span class="s1">  { team:"K5", members:["김하은","김지담","이경은","고은빈","김은서"], R:98, Z:10, E:0 },</span></p>
+<p class="p1"><span class="s1">];</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">let state = structuredClone(DEFAULT_DATA);</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">/** =========================</span></p>
+<p class="p1"><span class="s1"> *  유틸</span></p>
+<p class="p1"><span class="s1"> *  ========================= */</span></p>
+<p class="p1"><span class="s1">function normalize(s){ return (s ?? "").toString().trim().toLowerCase(); }</span></p>
+<p class="p1"><span class="s1">function calcTotal(t){ return (Number(t.R)||0) + (Number(t.Z)||0) + (Number(t.E)||0); }</span></p>
+<p class="p1"><span class="s1">function isPerfect(t){ return calcTotal(t) === TOTAL_MAX; }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">function applyRanking(sorted){</span></p>
+<p class="p1"><span class="s1">  let rank = 0;</span></p>
+<p class="p1"><span class="s1">  let prevScore = null;</span></p>
+<p class="p1"><span class="s1">  return sorted.map(t =&gt; {</span></p>
+<p class="p1"><span class="s1">    const score = calcTotal(t);</span></p>
+<p class="p1"><span class="s1">    if (prevScore === null || score !== prevScore) rank += 1;</span></p>
+<p class="p1"><span class="s1">    prevScore = score;</span></p>
+<p class="p1"><span class="s1">    return { ...t, rank, total: score };</span></p>
+<p class="p1"><span class="s1">  });</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">function medalClass(rank){</span></p>
+<p class="p1"><span class="s1">  if (rank === 1) return "gold";</span></p>
+<p class="p1"><span class="s1">  if (rank === 2) return "silver";</span></p>
+<p class="p1"><span class="s1">  if (rank === 3) return "bronze";</span></p>
+<p class="p1"><span class="s1">  return "gray";</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function totalRankClass(rank){</span></p>
+<p class="p1"><span class="s1">  if (rank === 1) return "rank1";</span></p>
+<p class="p1"><span class="s1">  if (rank === 2) return "rank2";</span></p>
+<p class="p1"><span class="s1">  if (rank === 3) return "rank3";</span></p>
+<p class="p1"><span class="s1">  return "";</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">function escapeHtml(str){</span></p>
+<p class="p1"><span class="s1">  return (str ?? "").toString()</span></p>
+<p class="p1"><span class="s1">    .replaceAll("&amp;","&amp;amp;")</span></p>
+<p class="p1"><span class="s1">    .replaceAll("&lt;","&amp;lt;")</span></p>
+<p class="p1"><span class="s1">    .replaceAll("&gt;","&amp;gt;")</span></p>
+<p class="p1"><span class="s1">    .replaceAll('"',"&amp;quot;")</span></p>
+<p class="p1"><span class="s1">    .replaceAll("'","&amp;#039;");</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">/** =========================</span></p>
+<p class="p1"><span class="s1"> *  상단 주차 텍스트 + 데이터반영 바</span></p>
+<p class="p1"><span class="s1"> *  ========================= */</span></p>
+<p class="p1"><span class="s1">function updateHeaderWeek(){</span></p>
+<p class="p1"><span class="s1">  const info = getProgramWeekInfo(new Date());</span></p>
+<p class="p1"><span class="s1">  const titleEl = document.getElementById("weekTitle");</span></p>
+<p class="p1"><span class="s1">  const subEl = document.getElementById("subtitle");</span></p>
+<p class="p1"><span class="s1">  const rangeEl = document.getElementById("rangeLine");</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  const dataText = document.getElementById("dataRefText");</span></p>
+<p class="p1"><span class="s1">  const dataBar = document.getElementById("dataRefBar");</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  updateProgramProgress(new Date());</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  rangeEl.textContent = `기간: ${PROGRAM_START.replaceAll("-",".")} ~ ${PROGRAM_END.replaceAll("-",".")} · 만점 ${TOTAL_MAX}점 (R ${SCORE_MAX.R} / Z ${SCORE_MAX.Z} / E ${SCORE_MAX.E})`;</span></p>
+<p class="p1"><span class="s1">  dataText.textContent = `데이터 반영: Week ${DATA_UP_TO_WEEK}까지`;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  let pct = 100;</span></p>
+<p class="p1"><span class="s1">  if (info.status === "in" &amp;&amp; info.week &gt; 0){</span></p>
+<p class="p1"><span class="s1">    pct = clamp((DATA_UP_TO_WEEK / info.week) * 100, 0, 100);</span></p>
+<p class="p1"><span class="s1">  }</span></p>
+<p class="p1"><span class="s1">  dataBar.style.width = `${pct.toFixed(0)}%`;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  if (info.status === "before") {</span></p>
+<p class="p1"><span class="s1">    titleEl.textContent = "Week 0";</span></p>
+<p class="p1"><span class="s1">    subEl.textContent = `전체 성경읽기 · 시작 전`;</span></p>
+<p class="p1"><span class="s1">    return;</span></p>
+<p class="p1"><span class="s1">  }</span></p>
+<p class="p1"><span class="s1">  if (info.status === "after") {</span></p>
+<p class="p1"><span class="s1">    titleEl.textContent = "Completed";</span></p>
+<p class="p1"><span class="s1">    subEl.textContent = `전체 성경읽기 · 종료`;</span></p>
+<p class="p1"><span class="s1">    return;</span></p>
+<p class="p1"><span class="s1">  }</span></p>
+<p class="p1"><span class="s1">  titleEl.textContent = `Week ${info.week}`;</span></p>
+<p class="p1"><span class="s1">  subEl.textContent = `전체 성경읽기 · ${info.week}주차 (${fmtKR(info.weekStart)} ~ ${fmtKR(info.weekEnd)})`;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">/** =========================</span></p>
+<p class="p1"><span class="s1"> *  렌더</span></p>
+<p class="p1"><span class="s1"> *  ========================= */</span></p>
+<p class="p1"><span class="s1">function render(){</span></p>
+<p class="p1"><span class="s1">  updateHeaderWeek();</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  const q = normalize(document.getElementById("q").value);</span></p>
+<p class="p1"><span class="s1">  const filtered = state.filter(t =&gt; {</span></p>
+<p class="p1"><span class="s1">    if (!q) return true;</span></p>
+<p class="p1"><span class="s1">    const hay = normalize(t.team) + " " + normalize(t.members.join(" "));</span></p>
+<p class="p1"><span class="s1">    return hay.includes(q);</span></p>
+<p class="p1"><span class="s1">  });</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  const sorted = [...filtered].sort((a,b)=&gt;{</span></p>
+<p class="p1"><span class="s1">    const ta = calcTotal(a), tb = calcTotal(b);</span></p>
+<p class="p1"><span class="s1">    if (tb !== ta) return tb - ta;</span></p>
+<p class="p1"><span class="s1">    return a.team.localeCompare(b.team, "ko");</span></p>
+<p class="p1"><span class="s1">  });</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  const ranked = applyRanking(sorted);</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  const board = document.getElementById("board");</span></p>
+<p class="p1"><span class="s1">  board.innerHTML = ranked.map(t =&gt; {</span></p>
+<p class="p1"><span class="s1">    const perfect = isPerfect(t);</span></p>
+<p class="p1"><span class="s1">    const pct = TOTAL_MAX ? clamp((t.total / TOTAL_MAX) * 100, 0, 100) : 0;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    const topClass = (t.rank === 1) ? "top1" : (t.rank === 2) ? "top2" : (t.rank === 3) ? "top3" : "";</span></p>
+<p class="p1"><span class="s1">    const isTop3 = t.rank &lt;= 3;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    return `</span></p>
+<p class="p1"><span class="s1">      &lt;div class="row ${topClass}"&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;div class="leftBlock"&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;div class="rankBadge ${medalClass(t.rank)} ${isTop3 ? "top3d" : ""}"&gt;${t.rank}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;div class="teamBlock"&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div class="team"&gt;${escapeHtml(t.team)}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div class="members"&gt;${escapeHtml(t.members.join(", "))}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        &lt;div class="right"&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;div class="rightTop"&gt;</span></p>
+<p class="p1"><span class="s1">            ${perfect ? `&lt;span class="perfectTag"&gt;Perfect&lt;/span&gt;` : ``}</span></p>
+<p class="p1"><span class="s1">          &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">          &lt;div class="meta"&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div class="labels"&gt;R&amp;nbsp;&amp;nbsp;Z&amp;nbsp;&amp;nbsp;E&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div class="numbersLine"&gt;${Number(t.R)||0}&amp;nbsp;&amp;nbsp;${Number(t.Z)||0}&amp;nbsp;&amp;nbsp;${Number(t.E)||0}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">          &lt;div class="total ${totalRankClass(t.rank)}"&gt;${t.total}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        &lt;div class="progressTrack"&gt;</span></p>
+<p class="p1"><span class="s1">          &lt;div class="progressFill" style="width:${pct.toFixed(1)}%"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">      &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">    `;</span></p>
+<p class="p1"><span class="s1">  }).join("") || `&lt;div style="padding:14px; color:#667085; font-family:Pretendard, system-ui, sans-serif;"&gt;검색 결과가 없습니다.&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">/** =========================</span></p>
+<p class="p1"><span class="s1"> *  링크 공유(쿼리스트링에 상태 저장)</span></p>
+<p class="p1"><span class="s1"> *  ========================= */</span></p>
+<p class="p1"><span class="s1">function encodeStateToUrl(){</span></p>
+<p class="p1"><span class="s1">  const payload = state.map(t =&gt; ({</span></p>
+<p class="p1"><span class="s1">    team: t.team,</span></p>
+<p class="p1"><span class="s1">    members: t.members,</span></p>
+<p class="p1"><span class="s1">    R: Number(t.R)||0,</span></p>
+<p class="p1"><span class="s1">    Z: Number(t.Z)||0,</span></p>
+<p class="p1"><span class="s1">    E: Number(t.E)||0</span></p>
+<p class="p1"><span class="s1">  }));</span></p>
+<p class="p1"><span class="s1">  const json = JSON.stringify(payload);</span></p>
+<p class="p1"><span class="s1">  const b64 = btoa(unescape(encodeURIComponent(json)));</span></p>
+<p class="p1"><span class="s1">  const url = new URL(location.href);</span></p>
+<p class="p1"><span class="s1">  url.searchParams.set("data", b64);</span></p>
+<p class="p1"><span class="s1">  return url.toString();</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">function decodeStateFromUrl(){</span></p>
+<p class="p1"><span class="s1">  const url = new URL(location.href);</span></p>
+<p class="p1"><span class="s1">  const b64 = url.searchParams.get("data");</span></p>
+<p class="p1"><span class="s1">  if (!b64) return false;</span></p>
+<p class="p1"><span class="s1">  try{</span></p>
+<p class="p1"><span class="s1">    const json = decodeURIComponent(escape(atob(b64)));</span></p>
+<p class="p1"><span class="s1">    const arr = JSON.parse(json);</span></p>
+<p class="p1"><span class="s1">    if (!Array.isArray(arr)) return false;</span></p>
+<p class="p1"><span class="s1">    state = arr.map(x =&gt; ({</span></p>
+<p class="p1"><span class="s1">      team: x.team ?? "",</span></p>
+<p class="p1"><span class="s1">      members: Array.isArray(x.members) ? x.members : [],</span></p>
+<p class="p1"><span class="s1">      R: Number(x.R)||0,</span></p>
+<p class="p1"><span class="s1">      Z: Number(x.Z)||0,</span></p>
+<p class="p1"><span class="s1">      E: Number(x.E)||0</span></p>
+<p class="p1"><span class="s1">    }));</span></p>
+<p class="p1"><span class="s1">    return true;</span></p>
+<p class="p1"><span class="s1">  }catch(e){</span></p>
+<p class="p1"><span class="s1">    console.warn("Failed to load data from URL:", e);</span></p>
+<p class="p1"><span class="s1">    return false;</span></p>
+<p class="p1"><span class="s1">  }</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">/** =========================</span></p>
+<p class="p1"><span class="s1"> *  CSV 로더</span></p>
+<p class="p1"><span class="s1"> *  ========================= */</span></p>
+<p class="p1"><span class="s1">function parseCsv(text){</span></p>
+<p class="p1"><span class="s1">  const lines = text.split(/\r?\n/).map(l=&gt;l.trim()).filter(Boolean);</span></p>
+<p class="p1"><span class="s1">  if (lines.length &lt; 2) return null;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  const header = lines[0].split(",").map(h=&gt;h.trim());</span></p>
+<p class="p1"><span class="s1">  const idx = {</span></p>
+<p class="p1"><span class="s1">    team: header.findIndex(h=&gt;normalize(h)==="team"),</span></p>
+<p class="p1"><span class="s1">    members: header.findIndex(h=&gt;normalize(h)==="members"),</span></p>
+<p class="p1"><span class="s1">    R: header.findIndex(h=&gt;normalize(h)==="r"),</span></p>
+<p class="p1"><span class="s1">    Z: header.findIndex(h=&gt;normalize(h)==="z"),</span></p>
+<p class="p1"><span class="s1">    E: header.findIndex(h=&gt;normalize(h)==="e"),</span></p>
+<p class="p1"><span class="s1">  };</span></p>
+<p class="p1"><span class="s1">  if (idx.team &lt; 0) return null;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">  const out = [];</span></p>
+<p class="p1"><span class="s1">  for (let i=1;i&lt;lines.length;i++){</span></p>
+<p class="p1"><span class="s1">    const cols = lines[i].split(",");</span></p>
+<p class="p1"><span class="s1">    const team = (cols[idx.team] ?? "").trim();</span></p>
+<p class="p1"><span class="s1">    if (!team) continue;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    const membersRaw = (idx.members&gt;=0 ? (cols[idx.members] ?? "") : "").trim();</span></p>
+<p class="p1"><span class="s1">    const members = membersRaw ? membersRaw.split("|").map(s=&gt;s.trim()).filter(Boolean) : [];</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    out.push({</span></p>
+<p class="p1"><span class="s1">      team,</span></p>
+<p class="p1"><span class="s1">      members,</span></p>
+<p class="p1"><span class="s1">      R: Number(cols[idx.R] ?? 0) || 0,</span></p>
+<p class="p1"><span class="s1">      Z: Number(cols[idx.Z] ?? 0) || 0,</span></p>
+<p class="p1"><span class="s1">      E: Number(cols[idx.E] ?? 0) || 0</span></p>
+<p class="p1"><span class="s1">    });</span></p>
+<p class="p1"><span class="s1">  }</span></p>
+<p class="p1"><span class="s1">  return out;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">/** =========================</span></p>
+<p class="p1"><span class="s1"> *  이벤트 바인딩</span></p>
+<p class="p1"><span class="s1"> *  ========================= */</span></p>
+<p class="p1"><span class="s1">document.getElementById("q").addEventListener("input", render);</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">document.getElementById("copyLink").addEventListener("click", async ()=&gt;{</span></p>
+<p class="p1"><span class="s1">  try{</span></p>
+<p class="p1"><span class="s1">    const link = encodeStateToUrl();</span></p>
+<p class="p1"><span class="s1">    await navigator.clipboard.writeText(link);</span></p>
+<p class="p1"><span class="s1">    alert("현재 데이터가 포함된 링크를 복사했습니다.");</span></p>
+<p class="p1"><span class="s1">  }catch(e){</span></p>
+<p class="p1"><span class="s1">    alert("복사에 실패했습니다. (브라우저 권한을 확인해 주세요)");</span></p>
+<p class="p1"><span class="s1">  }</span></p>
+<p class="p1"><span class="s1">});</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">document.getElementById("loadCsv").addEventListener("click", ()=&gt;{</span></p>
+<p class="p1"><span class="s1">  const text = document.getElementById("csv").value;</span></p>
+<p class="p1"><span class="s1">  const parsed = parseCsv(text);</span></p>
+<p class="p1"><span class="s1">  if (!parsed){</span></p>
+<p class="p1"><span class="s1">    alert("CSV 형식을 확인해 주세요. (헤더 포함: team,members,R,Z,E / members는 | 로 구분)");</span></p>
+<p class="p1"><span class="s1">    return;</span></p>
+<p class="p1"><span class="s1">  }</span></p>
+<p class="p1"><span class="s1">  state = parsed;</span></p>
+<p class="p1"><span class="s1">  render();</span></p>
+<p class="p1"><span class="s1">});</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">document.getElementById("resetData").addEventListener("click", ()=&gt;{</span></p>
+<p class="p1"><span class="s1">  state = structuredClone(DEFAULT_DATA);</span></p>
+<p class="p1"><span class="s1">  const url = new URL(location.href);</span></p>
+<p class="p1"><span class="s1">  url.searchParams.delete("data");</span></p>
+<p class="p1"><span class="s1">  history.replaceState({}, "", url.toString());</span></p>
+<p class="p1"><span class="s1">  render();</span></p>
+<p class="p1"><span class="s1">});</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">// IMPORTANT: keep runner correct on resize</span></p>
+<p class="p1"><span class="s1">window.addEventListener("resize", () =&gt; updateHeaderWeek());</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">/** =========================</span></p>
+<p class="p1"><span class="s1"> *  초기 로딩</span></p>
+<p class="p1"><span class="s1"> *  ========================= */</span></p>
+<p class="p1"><span class="s1">decodeStateFromUrl();</span></p>
+<p class="p1"><span class="s1">render();</span></p>
+<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
